@@ -1,0 +1,52 @@
+### PROMPT FOR GOOGLE ANTIGRAVITY AI: LINKEDIN PINPOINT AUTOMATION
+
+**Objective:**
+Create a daily automated video generation and YouTube upload workflow for the LinkedIn Pinpoint game
+
+**1. Technical Architecture:**
+- **Language:** Python
+- **Browser Automation:** Playwright (sync API) with native video recording enabled. see strucute of the site @link
+- **Video Editing:** MoviePy (to add intro/outro).
+- **Hosting/Upload:** GitHub Actions for daily execution + YouTube Data API v3 for uploading.
+
+**2. Core Logic:**
+for first 2-3 attampts it will gemini to api to get answer and at last attampt it will type the exact answer 
+- **Answer Fetching:** Fetch the daily answer and clues from this API: `https://linkedin-pinpoint-worker.gdgdughdshf.workers.dev/today/BloggingIo@7`
+- **Response Format:**
+  ```json
+  {
+    "success": true,
+    "data": {
+      "number": 621,
+      "date": "2026-01-11",
+      "clues": ["Clue 1", "Clue 2", ...],
+      "answer": "Correct Answer"
+    }
+  }
+  ```
+- **Bot Detection Bypass:** 
+  - Use human-like typing (random delays between keystrokes 0.1s - 0.4s).
+  - Add random pauses (2-5 seconds) before and after interacting with buttons.
+  - Implement stealth measures to hide `navigator.webdriver`.
+
+**3. Gameplay Interaction:**
+- The script should visit the LinkedIn Pinpoint game URL.
+- use gemini to get new posible thing 
+- Use the clues and answers from the API to play the game correctly.
+- No "solver" algorithm is needed; just use the provided API data to complete the game visual steps.
+
+**4. Video Production:**
+
+- **Recording:** Record the whole browser session at 1920x1080 resolution.
+- **Format:** Convert the final video to `.mp4`.
+
+**5. YouTube SEO & Upload:**
+- **Schedule:** Run daily via GitHub Actions at 18:32 UTC (00:02 IST).
+- **Date Logic:** Use strict IST (UTC+5:30) to determine the date for the title and description.
+- **Metadata Protection:** NEVER mention "automation" or "bot" in the title/description. It must look like manual, professional gameplay.
+- **Title Example:** `LinkedIn Pinpoint [Formatted Date] Answer | Today's Pinpoint Hints & Key`
+- **Description:** Include a link to `WordSolverX.com/pinpoint-solver`, describe the game steps for SEO, and include relevant hashtags.
+
+**6. Deployment:**
+- Provide a `requirements.txt` with `playwright`, `requests`, `moviepy`, `google-api-python-client`, etc.
+- Provide a GitHub Actions YAML file that installs Playwright, the Chromium browser, and necessary dependencies.
