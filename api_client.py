@@ -33,7 +33,7 @@ def generate_plausible_guesses(clues, correct_answer):
         return []
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash-exp')
+    model = genai.GenerativeModel('gemini-3-flash-preview')
 
     prompt = f"""
     I am playing a game called Pinpoint. The goal is to guess the category that links a set of clues.
