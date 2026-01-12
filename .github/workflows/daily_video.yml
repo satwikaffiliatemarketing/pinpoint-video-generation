@@ -1,9 +1,7 @@
 name: Daily Pinpoint Video
 
 on:
-  schedule:
-    # Runs at 08:07 UTC daily
-    - cron: '7 8 * * *'
+
   workflow_dispatch:
 
 permissions:
